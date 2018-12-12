@@ -9,6 +9,11 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="format-detection" content="telephone=no, email=no">
         <meta name="referrer" content="origin">
+		
+		<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+		<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache,no-store,must-revalidate"> 
+		<meta HTTP-EQUIV="expires" CONTENT="0">
+
 		<title>微信群</title>
 		<script type="text/javascript">
 			function isWeiXin() {
@@ -29,15 +34,34 @@
 	</head>
 	<body>
 		<div style="text-align: center;"><h3>要发布微信群，请加微信 hjscds ,发群二维码说明要发布即可！免费为你发布！</h3></div>
-		
+		<div style="text-align: center;"><button onclick="refresh_f5()"><b>点击此处可刷新</b></button></div>
 		<ul>
 			<li><img style="width: 100%;" src="weixinqun/hjscds.png" /></li>
 			<li>
 				<div style="text-align: center;"><h3>关注下方公众号查看更多微信群</h3></div>
 				<img style="width: 100%;" src="weixinqun/qrcode_for_wjk.jpg" />
 			</li>
-			<li><img style="width: 100%;" src="weixinqun/weixinqun_1.jpg" /></li>
-			<li><img style="width: 100%;" src="weixinqun/weixinqun_2.jpg" /></li>
+		</ul>
+		<ul id="weixinqunContainer">
+			<!--<li><img style="width: 100%;" src="weixinqun/weixinqun_1.jpg" /></li>-->
 		</ul>
 	</body>
+	
+	<script type="text/javascript">
+		
+		var imgs=["weixinqun/weixinqun_1.jpg"
+				,"weixinqun/weixinqun_2.jpg"
+				];
+		
+		var weixinqunHtml="";
+		var tpl='<li><img style="width: 100%;" src="WeiXinQunQR" /></li>';
+		for(var i=0;i<imgs.length; i++){
+			weixinqunHtml=weixinqunHtml+tpl.replace("WeiXinQunQR",imgs[i]+"?v="+ Math.random());
+		}
+		document.getElementById("weixinqunContainer").innerHTML=weixinqunHtml;
+		
+		function refresh_f5(){
+			window.location.href=window.location.pathname+"?v="+Math.random();
+		}
+	</script>
 </html>
